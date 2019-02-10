@@ -22,13 +22,15 @@ class Counter extends React.Component{
     }
   }
   render(){
-    let num = this.state.counter
+    let { counter } = this.state
     return(
       <div onClick={()=>{ 
-        this.setState({ counter: ++num})
-        alert('Counter is: ' + num)
+        this.setState({ counter: ++counter},
+          ()=>{
+            alert('Counter is: ' + this.state.counter)
+          })
       }}>
-        I am a counter {num}
+        I am a counter {counter}
       </div>
     )
   }
