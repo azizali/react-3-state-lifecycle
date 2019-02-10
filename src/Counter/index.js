@@ -17,12 +17,15 @@ import React from 'react'
 class Counter extends React.Component{
   constructor(props){
     super(props)
+    this.state = {
+      counter: props.initialValue
+    }
   }
   render(){
-    let num = this.props.initialValue
+    let num = this.state.counter
     return(
       <div onClick={()=>{ 
-        num++
+        this.setState({ counter: ++num})
         alert('Counter is: ' + num)
       }}>
         I am a counter {num}
