@@ -20,16 +20,20 @@ class Counter extends React.Component{
     this.state = {
       counter: props.initialValue
     }
+    this.handleClickCounter = this.handleClickCounter.bind(this)
   }
+  
+  handleClickCounter(){ 
+    this.setState({ counter: ++this.state.counter},
+      ()=>{
+        alert('Counter is: ' + this.state.counter)
+      })
+  }
+
   render(){
     let { counter } = this.state
     return(
-      <div onClick={()=>{ 
-        this.setState({ counter: ++counter},
-          ()=>{
-            alert('Counter is: ' + this.state.counter)
-          })
-      }}>
+      <div onClick={this.handleClickCounter}>
         I am a counter {counter}
       </div>
     )
