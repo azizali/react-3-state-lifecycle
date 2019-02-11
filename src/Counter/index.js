@@ -1,5 +1,6 @@
 import React from 'react'
 import Score from '../Score'
+import Clicker from '../Clicker'
 
 class Counter extends React.Component{
   constructor(props){
@@ -32,14 +33,11 @@ class Counter extends React.Component{
     return(
       <div className="row">
         <div className="col-6 border p-5">
-          <input
-            type="text"
-            onChange={this.handleInputChange}
-            value={counter}
+          <Clicker
+            counter={counter}
+            changeCb={this.handleInputChange}
+            clickCb={this.handleClickCounter}
           />
-          <button onClick={this.handleClickCounter}>
-            I am a counter {counter}
-          </button>
         </div>
         <div className="col-6 border bg-dark text-white p-5">
           <Score value={counter} />
