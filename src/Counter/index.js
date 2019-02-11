@@ -1,4 +1,5 @@
 import React from 'react'
+import Score from '../Score'
 
 class Counter extends React.Component{
   constructor(props){
@@ -29,15 +30,20 @@ class Counter extends React.Component{
   render(){
     let { counter } = this.state
     return(
-      <div>
-        <input
-          type="text"
-          onChange={this.handleInputChange}
-          value={counter}
-        />
-        <button onClick={this.handleClickCounter}>
-          I am a counter {counter}
-        </button>
+      <div className="row">
+        <div className="col-6 border p-5">
+          <input
+            type="text"
+            onChange={this.handleInputChange}
+            value={counter}
+          />
+          <button onClick={this.handleClickCounter}>
+            I am a counter {counter}
+          </button>
+        </div>
+        <div className="col-6 border bg-dark text-white p-5">
+          <Score value={counter} />
+        </div>
       </div>
     )
   }
