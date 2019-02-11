@@ -8,8 +8,8 @@ class Counter extends React.Component{
     this.state = {
       counter: props.initialValue
     }
-    this.handleClickCounter = this.handleClickCounter.bind(this)
-    this.handleInputChange = this.handleInputChange.bind(this)
+    this.incrementCounter = this.incrementCounter.bind(this)
+    this.setCounterValue = this.setCounterValue.bind(this)
   }
 
   shouldComponentUpdate(props, state){
@@ -20,11 +20,11 @@ class Counter extends React.Component{
     }
   }
   
-  handleInputChange(e){
-    this.setState({ counter: parseInt(e.target.value) })
+  setCounterValue(val){
+    this.setState({ counter: val })
   }
 
-  handleClickCounter(){ 
+  incrementCounter(){ 
     this.setState({ counter: ++this.state.counter})
   }
 
@@ -35,8 +35,8 @@ class Counter extends React.Component{
         <div className="col-6 border p-5">
           <Clicker
             counter={counter}
-            changeCb={this.handleInputChange}
-            clickCb={this.handleClickCounter}
+            changeCb={this.setCounterValue}
+            clickCb={this.incrementCounter}
           />
         </div>
         <div className="col-6 border bg-dark text-white p-5">
