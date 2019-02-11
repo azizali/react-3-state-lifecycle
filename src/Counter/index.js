@@ -7,6 +7,7 @@ class Counter extends React.Component{
       counter: props.initialValue
     }
     this.handleClickCounter = this.handleClickCounter.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   shouldComponentUpdate(props, state){
@@ -17,18 +18,26 @@ class Counter extends React.Component{
     }
   }
   
+  handleInputChange(e){
+    this.setState({ counter: parseInt(e.target.value) })
+  }
+
   handleClickCounter(){ 
-    this.setState({ counter: ++this.state.counter},
-      ()=>{
-        alert('Counter is: ' + this.state.counter)
-      })
+    this.setState({ counter: ++this.state.counter})
   }
 
   render(){
     let { counter } = this.state
     return(
-      <div onClick={this.handleClickCounter}>
-        I am a counter {counter}
+      <div>
+        <input
+          type="text"
+          onChange={this.handleInputChange}
+          value={counter}
+        />
+        <button onClick={this.handleClickCounter}>
+          I am a counter {counter}
+        </button>
       </div>
     )
   }
